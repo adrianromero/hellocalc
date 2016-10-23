@@ -3,6 +3,8 @@ HelloCalc (Calculator)
 
 HelloCalc is a programable calculator for Android created with JavaFX.
 
+![Screenshot](http://i.imgur.com/an8PQmR.jpg)
+
 Acknowledgments
 ===============
 
