@@ -1,0 +1,72 @@
+//    HelloCalc (Calculator) is a JavaFX calculator
+//    Copyright (C) 2016 Adrián Romero Corchado.
+//
+//    This file is part of HelloCalc
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.javafxports:jfxmobile-plugin:1.0.8'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'org.javafxports.jfxmobile'
+
+mainClassName = 'com.adr.hellocalc.Main'
+
+description = """"""
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile group: 'com.github.adrianromero', name: 'jlatexmathfx', version: '0.3.2.1'
+    compile group: 'org.mozilla', name: 'rhino', version: '1.7.7.1'
+
+//    compile 'com.gluonhq:charm-down-common:2.0.1'
+//    desktopRuntime 'com.gluonhq:charm-down-desktop:2.0.1'
+//    androidRuntime 'com.gluonhq:charm-down-android:2.0.1'
+    
+    testCompile group: 'junit', name: 'junit', version: '4.10' 
+}
+
+jfxmobile {
+    android {
+        compileSdkVersion = '24'
+        manifest = 'src/android/AndroidManifest.xml'
+    }
+    ios {
+        infoPList = file('src/ios/Default-Info.plist')
+        forceLinkClasses = [
+                'com.gluonhq.**.*',
+                'io.datafx.**.*',
+                'javax.annotations.**.*',
+                'javax.inject.**.*',
+                'javax.json.**.*',
+                'org.glassfish.json.**.*'
+        ]
+    }
+}
