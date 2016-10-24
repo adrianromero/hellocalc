@@ -19,7 +19,7 @@
 /* global math */
 (function () {
 
-    var scope;
+    var scope = {};
 
     // system namespace
     calculator = {};// 
@@ -45,7 +45,6 @@
         return calculator.latexmodel;
     };
     calculator.reset = function () {
-        scope = {};
         calculator.latexmodel = [];
         calculator.EXP = null;
         ANS = scope.ANS = 0;
