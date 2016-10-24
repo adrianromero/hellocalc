@@ -25,10 +25,6 @@
     -fx-background-color: black;   
 }*/
 
-.scroll-pane > .viewport {
-   -fx-background-color: transparent;
-}
-
 .buttonkeyboard {
     -fx-font-size: 22px;
     -fx-font-family: 'ROBOTO MONO LIGHT';    
