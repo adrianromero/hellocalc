@@ -8,15 +8,23 @@ HelloCalc is a programable calculator for Android created with JavaFX.
 Examples
 ========
 
+Expressions evaluation
+----------------------
 ![Expression 1](http://i.imgur.com/YVcQ5FO.png)
 ![Expression 1 - Result](http://i.imgur.com/GMIS3nG.png)
 
+Complex calculation
+-------------------
 ![Complex 1](http://i.imgur.com/ITTL2YZ.png)
 ![Complex 1 - Result](http://i.imgur.com/Xcnfea5.png)
 
+Matrix calculation
+------------------
 ![Matrix 1](http://i.imgur.com/A8Cv9Q6.png)
 ![Matrix 1 - Result](http://i.imgur.com/mqTFqUl.png)
 
+Function definitions
+--------------------
 ![Function Definition 1](http://i.imgur.com/bsS9TsG.png)
 ![Function Definition 1 - Result](http://i.imgur.com/RYpSpWO.png)
 ![Function 1](http://i.imgur.com/mYBBIZj.png)
