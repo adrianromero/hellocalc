@@ -42,9 +42,11 @@ Generates a debug Android apk containing the HelloCalc application.
 Acknowledgments
 ===============
 
+HelloCalc just glues all the following projects together into one single application. All credit goes to these projects. 
+
 * [Mathjs](https://github.com/josdejong/mathjs)  Copyright (C) 2013-2016 Jos de Jong wjosdejong@gmail.com. Apache License, Version 2.0.
 * [Mozilla Rhino](https://github.com/mozilla/rhino) Copyright (C) 2005-2016 Mozilla Developer Network and individual contributors. Mozilla Public License Version 2.0.
-* [JLatexMathFX](https://github.com/bitstormGER/jlatexmathfx) GNU General Public License, version 2.
+* [JLatexMathFX](https://github.com/bitstormGER/jlatexmathfx) GNU General Public License, version 2. This library is a port to JavaFX of [JLatexMath](https://github.com/opencollab/jlatexmath).
 * [JavaFXPorts](http://gluonhq.com/labs/javafxports/) 
 * [Roboto Fonts](https://fonts.google.com/specimen/Roboto) Apache License, Version 2.0.
 
