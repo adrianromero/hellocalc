@@ -17,14 +17,23 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+.root {
+    button-color: lightgray;
+}
+
+/*.rootpane {
+    -fx-background-color: black;   
+}*/
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
 
 .buttonkeyboard {
-    backcolor: lightgray;
-    
     -fx-font-size: 22px;
     -fx-font-family: 'ROBOTO MONO LIGHT';    
     -fx-text-fill: #505050;
-    -fx-background-color: backcolor;
+    -fx-background-color: button-color;
     -fx-background-radius: 0px;        
     -fx-background-insets: 0px;
     -fx-padding: 5 0 5 0;
@@ -33,24 +42,25 @@
     -fx-min-height: 40;
     -fx-max-height: 40;
 }
+
 .buttonkeyboard:armed {
-    -fx-background-color: derive(backcolor, 30%);
+    -fx-background-color: derive(button-color, 30%);
 }
 
 .functionkeyboard {
-    backcolor: derive(orange, 40%);    
+    button-color: derive(orange, 40%);    
 }
 
 .function2keyboard {
-    backcolor: derive(red, 80%);    
+    button-color: derive(red, 80%);    
 }
 
 .execkeyboard {
-    backcolor: #6098ff;          
+    button-color: #6098ff;          
 }
 
 .graykeyboard {
-    backcolor: #c0c0c0;
+    button-color: #c0c0c0;
     -fx-font-size: 23px;
 }
 
@@ -64,13 +74,13 @@
     -fx-pref-height: -1;
     -fx-min-height: -1;
     -fx-max-height: -1;    
-    backcolor: darkgray;          
+    button-color: darkgray;          
     -fx-text-fill: white;
     -fx-padding: 2 0 2 0;  
 }
 .modekeyboardselected {
     -fx-font-weight: bold;
-    backcolor: #404040;
+    button-color: #404040;
 }
 
 .displayresult {

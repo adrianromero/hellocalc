@@ -90,6 +90,7 @@ public class Main extends Application {
         AnchorPane.setBottomAnchor(root, 0.0);
 
         AnchorPane anchorroot = new AnchorPane(root);
+        anchorroot.getStyleClass().add("rootpane");
 
         double width;
         double height;
