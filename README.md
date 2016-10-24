@@ -22,6 +22,15 @@ Examples
 ![Function 1](http://i.imgur.com/mYBBIZj.png)
 ![Function 1 - Result](http://i.imgur.com/oy45eR8.png)
 
+Compilation
+===========
+
+Generates a debug Android apk containing the HelloCalc application.
+
+```
+./gradlew android
+```
+
 Acknowledgments
 ===============
 
