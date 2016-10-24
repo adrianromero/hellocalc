@@ -1,0 +1,103 @@
+/*
+    HelloCalc (Calculator) is a JavaFX calculator
+    Copyright (C) 2016 Adrián Romero Corchado.
+
+    This file is part of HelloCalc
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+.root {
+    button-color: lightgray;
+}
+
+.rootpane {
+    -fx-background-color: black;   
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.buttonkeyboard {
+    -fx-font-size: 22px;
+    -fx-font-family: 'ROBOTO MONO LIGHT';    
+    -fx-text-fill: #f0f0f0;
+    -fx-background-color: button-color, black;
+    -fx-background-radius: 5px 5px 5px 5px, 4px 4px 16px 16px;        
+    -fx-background-insets: 2px, 3px;
+    -fx-padding: 5 0 5 0;
+    -fx-alignment: center;
+    -fx-pref-height: 40;
+    -fx-min-height: 40;
+    -fx-max-height: 40;
+}
+
+.buttonkeyboard:armed {
+    -fx-background-color: button-color, #404040;
+}
+
+.functionkeyboard {
+    button-color: derive(orange, 40%);    
+}
+
+.function2keyboard {
+    button-color: derive(red, 80%);    
+}
+
+.execkeyboard {
+    button-color: #6098ff;          
+}
+
+.graykeyboard {
+    button-color: #c0c0c0;
+    -fx-font-size: 23px;
+}
+
+.textkeyboard {
+    -fx-font-size: 18px;  
+}
+
+.modekeyboard {
+    -fx-font-family: 'ROBOTO MONO BOLD';        
+    -fx-font-size: 14px;
+    -fx-pref-height: -1;
+    -fx-min-height: -1;
+    -fx-max-height: -1;    
+    button-color: darkgray;          
+    -fx-text-fill: white;
+    -fx-padding: 2 0 2 0;  
+}
+.modekeyboardselected {
+    -fx-font-weight: bold;
+    button-color: #404040;
+}
+
+.displayresult {
+    /* No font syling - Font is managed in code */
+    -fx-fill: #303030;    
+}
+.displayerror {
+    -fx-fill: #ff5050;    
+}
+
+.calcindicator {
+    -fx-fill: #d0d0d0;  
+    -fx-font-size: 18;
+    -fx-font-family: 'ROBOTO MONO BOLD';        
+}
+
+.displayedit {
+    /* No font syling - Font is managed in code */
+    -fx-fill: #f0f0f0;      
+}
