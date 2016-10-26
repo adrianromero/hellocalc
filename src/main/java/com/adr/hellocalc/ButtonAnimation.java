@@ -45,8 +45,7 @@ public class ButtonAnimation {
     }
     
     public static void addPressedCircle(Control n, Paint p, Paint s) {
-        
-        n.setOnMousePressed(ev1 -> {
+        n.addEventFilter(MouseEvent.MOUSE_PRESSED, ev1 -> {
             Point2D point = new Point2D(n.getWidth() / 2.0, n.getHeight() / 2.0);
             Parent root = n;
             while(!(root instanceof AnchorPane)) {
