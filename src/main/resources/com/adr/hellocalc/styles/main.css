@@ -21,9 +21,9 @@
     button-color: lightgray;
 }
 
-/*.rootpane {
-    -fx-background-color: black;   
-}*/
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
 
 .buttonkeyboard {
     -fx-font-size: 22px;
@@ -66,7 +66,7 @@
 
 .modekeyboard {
     -fx-font-family: 'ROBOTO MONO BOLD';        
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-pref-height: -1;
     -fx-min-height: -1;
     -fx-max-height: -1;    
@@ -75,7 +75,6 @@
     -fx-padding: 2 0 2 0;  
 }
 .modekeyboardselected {
-    -fx-font-weight: bold;
     button-color: #404040;
 }
 
@@ -95,4 +94,13 @@
 .displayedit {
     /* No font syling - Font is managed in code */
     -fx-fill: #909090;      
+}
+
+.loading-gears {
+    -fx-fill: #404040;  
+}
+
+.loading-rect {
+    -fx-fill: #e0e0e0; 
+    -fx-stroke: #e0e0e0; 
 }

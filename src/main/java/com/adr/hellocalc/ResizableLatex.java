@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javafx.geometry.HPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import org.scilab.forge.jlatexmath.ParseException;
 import org.scilab.forge.jlatexmath.TeXConstants;
 import org.scilab.forge.jlatexmath.TeXFormula;
@@ -41,7 +42,7 @@ public class ResizableLatex extends Canvas {
     private final HPos alignment;
 
     private String latex = null;
-    private Color color = Color.BLACK;    
+    private Paint color = Color.BLACK;    
     private double currentwidth = 100.0;
     
     public ResizableLatex(double minsize, double maxsize) {
@@ -59,7 +60,7 @@ public class ResizableLatex extends Canvas {
         setLatex(latex, Color.BLACK);
     }
 
-    public void setLatex(String latex, Color color) {
+    public void setLatex(String latex, Paint color) {
         this.latex = latex;
         this.color = color;
         adjustEditorSize(currentwidth);

@@ -23,7 +23,6 @@ import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
@@ -43,7 +42,9 @@ public class Loading {
 
     public Loading() {
         
-        Rectangle rect = new Rectangle(100.0, 100.0, Color.gray(0.9));
+        Rectangle rect = new Rectangle(100.0, 100.0);
+        rect.setStrokeWidth(1.0);
+        rect.getStyleClass().add("loading-rect");
         rect.setArcHeight(50.0);
         rect.setArcWidth(50.0);
         rect.setMouseTransparent(true);
@@ -54,7 +55,7 @@ public class Loading {
         gear1.setLayoutY(-182.0);
         gear1.setScaleX(0.1);
         gear1.setScaleY(0.1);
-        gear1.setFill(Color.gray(0.3));
+        gear1.getStyleClass().add("loading-gears");
         gear1.setMouseTransparent(true);      
         rt = new RotateTransition(Duration.millis(3000), gear1);
         rt.setFromAngle(0.0);
@@ -68,7 +69,7 @@ public class Loading {
         gear2.setLayoutY(-154.0);
         gear2.setScaleX(0.08);
         gear2.setScaleY(0.08);
-        gear2.setFill(Color.gray(0.3));
+        gear2.getStyleClass().add("loading-gears");
         gear2.setMouseTransparent(true);
         rt2 = new RotateTransition(Duration.millis(2400), gear2); // 2400 = 3000 * 0.08 / 0.1
         rt2.setFromAngle(360.0);

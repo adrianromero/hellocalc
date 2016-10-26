@@ -20,6 +20,11 @@
 (function () {
 
     var keyboard = KEYBOARDBUILDER.createKeyboard(6, 6);
+    
+//    keyboard.addSpan(2);
+//    keyboard.addButton(CALCBUTTONBUILDER.createCalcButton().addVisitor(KEYBOARDBUILDER.createCommander(KEYBOARDBUILDER.createCommand("MATH", "<KB>0"))).addClasses("modekeyboard", "modekeyboardselected").build());
+//    keyboard.addButton(CALCBUTTONBUILDER.createCalcButton().addVisitor(KEYBOARDBUILDER.createCommander(KEYBOARDBUILDER.createCommand("CONFIG", "<KB>1"))).addClasses("modekeyboard").build());
+//    keyboard.addSpan(2);
 
     keyboard.addButton(CALCBUTTONBUILDER.createCalcButton()
             .addVisitor(KEYBOARDBUILDER.createCommander(KEYBOARDBUILDER.createCommand("<EXEC>calculator.radiansfactorswitch()")))

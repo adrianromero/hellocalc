@@ -34,7 +34,7 @@
     -fx-font-family: 'ROBOTO MONO LIGHT';    
     -fx-text-fill: #f0f0f0;
     -fx-background-color: button-color, black;
-    -fx-background-radius: 5px 5px 5px 5px, 4px 4px 16px 16px;        
+    -fx-background-radius: 5px 5px 5px 5px, 8px 8px 16px 16px;        
     -fx-background-insets: 2px, 3px;
     -fx-padding: 5 0 5 0;
     -fx-alignment: center;
@@ -70,7 +70,7 @@
 
 .modekeyboard {
     -fx-font-family: 'ROBOTO MONO BOLD';        
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-pref-height: -1;
     -fx-min-height: -1;
     -fx-max-height: -1;    
@@ -79,8 +79,7 @@
     -fx-padding: 2 0 2 0;  
 }
 .modekeyboardselected {
-    -fx-font-weight: bold;
-    button-color: #404040;
+    -fx-background-color: button-color, #404040;
 }
 
 .displayresult {
@@ -100,4 +99,13 @@
 .displayedit {
     /* No font syling - Font is managed in code */
     -fx-fill: #f0f0f0;      
+}
+
+.loading-gears {
+    -fx-fill: #e0e0e0; 
+}
+
+.loading-rect {
+    -fx-fill: transparent; 
+    -fx-stroke: #e0e0e0; 
 }

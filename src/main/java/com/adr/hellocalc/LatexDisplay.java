@@ -22,6 +22,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
@@ -35,6 +36,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
@@ -94,7 +96,10 @@ public class LatexDisplay implements Display {
         // if result is undefined the it means there has not been any result
         // So no need to update the display for the results just the modes.        
         if (result != null) {
-            formatLatexResult(latexresult, result);
+            
+            Properties styling = (Properties) viewdisplay.getScene().getProperties().get("styling");          
+            formatLatexResult(latexresult, result, Color.valueOf(styling.getProperty("result-color", "BLACK")), Color.valueOf(styling.getProperty("error-color", "RED")));
+           
             displaytransition.playFromStart();
             
             Object latex = calc.exec("calculator.latex()");
@@ -104,7 +109,7 @@ public class LatexDisplay implements Display {
                 for (Object l: listlatex) {
                     ResizableLatex nlatex = new ResizableLatex(1.0, 2.5); 
                     maindisplay.addLatex(nlatex);
-                    nlatex.setLatex(formatLatex(l), Color.DARKBLUE);   
+                    nlatex.setLatex(formatLatex(l), Color.valueOf(styling.getProperty("expression-color", "DARKBLUE")));   
                 }
                 maindisplay.setVvalue(maindisplay.getVmin());
             } else {
@@ -144,29 +149,29 @@ public class LatexDisplay implements Display {
         }
     }
     
-    private void formatLatexResult(ResizableLatex t, Object obj) {
+    private void formatLatexResult(ResizableLatex t, Object obj, Paint resultpaint, Paint errorpaint) {
         if (obj.equals("")) {
-            t.setLatex(null);
+            t.setLatex(null, resultpaint);
         } else if (obj instanceof Number) {
             double d = ((Number) obj).doubleValue();
             if (Double.isInfinite(d)) {
-                t.setLatex("INFINITY", Color.RED);
+                t.setLatex("INFINITY", errorpaint);
             } else if (Double.isNaN(d)) {
-                t.setLatex("NOT\\ A\\ NUMBER", Color.RED);
+                t.setLatex("NOT\\ A\\ NUMBER", errorpaint);
             } else if (d == Double.MAX_VALUE || d == Double.MIN_VALUE) {
-                t.setLatex("OVERFLOW", Color.RED);
+                t.setLatex("OVERFLOW", errorpaint);
             } else if (d == 0.0) {
-                t.setLatex("=" + simpleFormat.format(d));
+                t.setLatex("=" + simpleFormat.format(d), resultpaint);
             } else if (d < -9999999999.0 || d > 9999999999.0 || (d >= -0.0000000001 && d <= 0.0000000001)) {
                 String expresult = expFormat.format(d);
-                t.setLatex("=" + (expresult.contains("E-") ? expresult : expresult.replace("E", "E+")));
+                t.setLatex("=" + (expresult.contains("E-") ? expresult : expresult.replace("E", "E+")), resultpaint);
             } else {
-                t.setLatex("=" + simpleFormat.format(d));
+                t.setLatex("=" + simpleFormat.format(d), resultpaint);
             }
         } else if (obj instanceof Throwable) {
-            t.setLatex("SYNTAX\\ ERROR", Color.RED);
+            t.setLatex("SYNTAX\\ ERROR", errorpaint);
         } else {
-            t.setLatex("=" + obj.toString());
+            t.setLatex("=" + obj.toString(), resultpaint);
         }
     } 
 }

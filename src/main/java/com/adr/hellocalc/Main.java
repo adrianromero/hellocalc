@@ -19,7 +19,10 @@ package com.adr.hellocalc;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import java.util.concurrent.ForkJoinPool;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
@@ -53,6 +56,9 @@ public class Main extends Application {
 //        String[] resources = new String[]{"local:scientific"};
 //        String keyboard = "local:basic_keyboard";
 //        String[] resources = new String[]{"local:basic"};
+
+//        String style = "/com/adr/hellocalc/styles/main";
+        String style = "/com/adr/hellocalc/styles/maindark";
 
         Script calculator = new ScriptRhino();
 //        Script calculator = new ScriptWebEngine();
@@ -110,8 +116,14 @@ public class Main extends Application {
             }
         });
 
-        scene.getStylesheets()
-                .add(getClass().getResource("/com/adr/hellocalc/styles/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(style + ".css").toExternalForm());
+        Properties styling = new Properties();
+        try {
+            styling.load(getClass().getResourceAsStream(style + ".properties"));
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        scene.getProperties().put("styling", styling);
         primaryStage.getIcons()
                 .add(new Image(Main.class.getResourceAsStream("/com/adr/hellocalc/images/icon.png")));
         primaryStage.setScene(scene);
