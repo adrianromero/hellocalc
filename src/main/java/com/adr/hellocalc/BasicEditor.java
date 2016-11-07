@@ -24,6 +24,8 @@ import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
@@ -36,7 +38,7 @@ public class BasicEditor {
     private final ScrollableEditor text;
     private final Deque<String> textqueue = new LinkedList<>();
     private final Deque<String> backtextqueue = new LinkedList<>();
-    
+
     private final Transition cleartransition;
 
     public BasicEditor() {
@@ -45,18 +47,21 @@ public class BasicEditor {
         FadeTransition ft2 = new FadeTransition(Duration.millis(300));
         ft2.setFromValue(1.0);
         ft2.setToValue(0.0);
-        
+
         TranslateTransition tr2 = new TranslateTransition(Duration.millis(300));
         tr2.setFromY(0.0);
         tr2.setToY(-35.0);
         tr2.setInterpolator(Interpolator.EASE_OUT);
-        
+
         cleartransition = new ParallelTransition(text.getNode(), ft2, tr2);
-        cleartransition.setOnFinished(e -> {
-            text.setText(getExpression());
-            text.getNode().setOpacity(1.0);
-            text.getNode().setTranslateY(0.0);
-        });        
+        cleartransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(getExpression());
+                text.getNode().setOpacity(1.0);
+                text.getNode().setTranslateY(0.0);
+            }
+        });
     }
 
     public void addCommand(String str) {
@@ -71,7 +76,7 @@ public class BasicEditor {
             textqueue.pollLast();
             text.setText(getExpression());
         } else if ("<REV>".equals(str)) { // Revert
-            Deque<String> swaptextqueue = new LinkedList<>(textqueue);      
+            Deque<String> swaptextqueue = new LinkedList<>(textqueue);
             textqueue.clear();
             textqueue.addAll(backtextqueue);
             backtextqueue.clear();
@@ -80,7 +85,7 @@ public class BasicEditor {
         } else {
             textqueue.add(str);
             text.setText(getExpression());
-        }      
+        }
     }
 
     public String getExpression() {
@@ -93,5 +98,5 @@ public class BasicEditor {
 
     public Node getNode() {
         return text.getNode();
-    }  
+    }
 }

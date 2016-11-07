@@ -18,6 +18,7 @@
 package com.adr.hellocalc;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -33,16 +34,16 @@ import javafx.scene.text.Text;
  * @author adrian
  */
 public class ScrollableEditor {
-    
-    private static final String FONT_NAME = "ROBOTO MONO BOLD";   
-    
+
+    private static final String FONT_NAME = "ROBOTO MONO BOLD";
+
     private final ScrollPane container;
     private final VBox box;
     private final double maxfontsize;
     private final double minfontsize;
-    
+
     private String text = null;
-    
+
     public ScrollableEditor(double maxfontsize, double minfontsize) {
 
         this.box = new VBox();
@@ -57,21 +58,24 @@ public class ScrollableEditor {
         container.setBackground(Background.EMPTY);
         container.setBorder(Border.EMPTY);
         container.setPadding(new Insets(0.0));
-        container.setFitToHeight(true);   
-        container.setPrefHeight(60.0);  
-        container.widthProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
-            setText(text);
-        });    
+        container.setFitToHeight(true);
+        container.setPrefHeight(60.0);
+        container.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                setText(text);
+            }
+        });
     }
-    
+
     public Node getNode() {
         return container;
     }
-    
+
     public String getText() {
         return text;
     }
-    
+
     public void setText(String text) {
         this.text = text;
         box.getChildren().clear();
@@ -79,21 +83,24 @@ public class ScrollableEditor {
         box.getChildren().add(t1);
 
         printTextSize(t1, text, container.getWidth(), maxfontsize, minfontsize);
-        splitText(box, t1, container.getWidth(), minfontsize);  
-        Platform.runLater(() -> {
-            container.setVvalue(container.getVmax());
+        splitText(box, t1, container.getWidth(), minfontsize);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                container.setVvalue(container.getVmax());
+            }
         });
     }
-    
+
     private static Text createText() {
-        Text t = new Text();        
+        Text t = new Text();
         t.getStyleClass().add("displayedit");
         return t;
     }
 
     private static void splitText(VBox parent, Text text, final double maxwidth, double minFontSize) {
         StringBuilder b = new StringBuilder();
-        while(text.getLayoutBounds().getWidth() > maxwidth) {
+        while (text.getLayoutBounds().getWidth() > maxwidth) {
             String s = text.getText();
             b.insert(0, s.charAt(s.length() - 1));
             text.setText(s.substring(0, s.length() - 1));
@@ -104,9 +111,9 @@ public class ScrollableEditor {
             t1.setText(b.toString());
             parent.getChildren().add(t1);
             splitText(parent, t1, maxwidth, minFontSize);
-        }        
+        }
     }
-    
+
     private static void printTextSize(final Text text, final String t, final double maxwidth, double maxFontSize, double minFontSize) {
         double actualSize = maxFontSize;
         text.setFont(new Font(FONT_NAME, actualSize));
@@ -115,5 +122,5 @@ public class ScrollableEditor {
             maxFontSize -= 0.1;
             text.setFont(new Font(FONT_NAME, maxFontSize));
         }
-    }     
+    }
 }

@@ -20,6 +20,7 @@ package com.adr.hellocalc;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
@@ -52,8 +53,11 @@ public class ScrollableLatexList extends ScrollPane {
         setBorder(Border.EMPTY);
         setPadding(new Insets(0.0));
         setFitToHeight(true);
-        widthProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
-            adjustEditorSize(newValue.doubleValue());
+        widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                adjustEditorSize(newValue.doubleValue());
+            }
         });        
     }
     
