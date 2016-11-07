@@ -20,7 +20,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'org.javafxports:jfxmobile-plugin:1.0.8'
+        classpath 'org.javafxports:jfxmobile-plugin:1.1.0'
     }
 }
 
@@ -57,6 +57,13 @@ jfxmobile {
     android {
         compileSdkVersion = '24'
         manifest = 'src/android/AndroidManifest.xml'
+        signingConfig {
+            // keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias app
+            storeFile file('my-release-key.jks')
+            storePassword '123456'
+            keyAlias 'app'
+            keyPassword '123456'
+        }
     }
     ios {
         infoPList = file('src/ios/Default-Info.plist')
