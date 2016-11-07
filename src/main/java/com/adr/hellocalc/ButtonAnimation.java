@@ -64,7 +64,7 @@ public class ButtonAnimation {
             continueTillEnd.value = false;    
             
             // exit transition
-            FadeTransition outtransition = new FadeTransition(Duration.millis(400), c);
+            FadeTransition outtransition = new FadeTransition(Duration.millis(500), c);
             outtransition.setFromValue(1.0);
             outtransition.setToValue(0.0);      
             outtransition.setInterpolator(Interpolator.EASE_IN);      
@@ -73,16 +73,16 @@ public class ButtonAnimation {
             });            
                         
             // enter transtion
-            FadeTransition enterfade = new FadeTransition(Duration.millis(200));
+            FadeTransition enterfade = new FadeTransition(Duration.millis(400));
             enterfade.setFromValue(0.5);
             enterfade.setToValue(1.0);
-            enterfade.setInterpolator(Interpolator.EASE_IN);            
-            ScaleTransition enterscale = new ScaleTransition(Duration.millis(200));
+            enterfade.setInterpolator(Interpolator.EASE_OUT);            
+            ScaleTransition enterscale = new ScaleTransition(Duration.millis(400));
             enterscale.setFromX(0.5);
             enterscale.setFromY(0.5);
             enterscale.setToX(6.0);
             enterscale.setToY(6.0);
-            enterscale.setInterpolator(Interpolator.EASE_IN);
+            enterscale.setInterpolator(Interpolator.EASE_OUT);
             ParallelTransition entertransition = new ParallelTransition(c, enterfade, enterscale);
             entertransition.setOnFinished(ev4 -> {
                 if (continueTillEnd.value) {
